@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>明石ITサポート｜小さな会社・個人事業主のPC・IT相談</title>
+  <meta name="description" content="明石・神戸・加古川の小さな会社・個人事業主向けITサポート。PC購入、初期設定、Microsoft 365、Google Workspace、Excel改善、起業時のIT準備など、必要なところだけスポットで対応します。">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="明石ITサポート">
+  <meta property="og:description" content="IT担当者を雇うほどではない小さな会社・個人事業主のIT困りごとを、必要なところだけスポットで支援します。">
+  <meta property="og:type" content="website">
+
+  <!--
+    GA4を使う場合：
+    1) 下記 G-XXXXXXXXXX を自分の測定IDに変更
+    2) コメントアウトを解除
+  -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+
+  <style>
+    :root{
+      --ink:#172033;
+      --muted:#657085;
+      --line:#e5e9f0;
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --brand:#155eef;
+      --brand-dark:#0d47c7;
+      --soft:#eef4ff;
+      --ok:#0d7a50;
+      --max:1080px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+      color:var(--ink);
+      background:#fff;
+      line-height:1.75;
+    }
+    a{color:inherit}
+    .wrap{width:min(calc(100% - 36px),var(--max));margin:auto}
+    header{
+      position:sticky;top:0;z-index:20;
+      background:rgba(255,255,255,.94);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(10px);
+    }
+    .nav{
+      min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+    }
+    .brand{font-weight:800;font-size:1.08rem;text-decoration:none}
+    .navlinks{display:flex;gap:20px;align-items:center;font-size:.92rem}
+    .navlinks a{text-decoration:none;color:var(--muted)}
+    .hero{
+      background:linear-gradient(180deg,#f7faff 0%,#fff 100%);
+      padding:84px 0 70px;
+    }
+    .eyebrow{
+      display:inline-block;padding:6px 11px;border-radius:999px;
+      background:var(--soft);color:var(--brand);font-weight:700;font-size:.86rem;
+    }
+    h1{
+      font-size:clamp(2rem,5vw,3.55rem);
+      line-height:1.23;letter-spacing:-.035em;
+      margin:20px 0 18px;max-width:850px;
+    }
+    .lead{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--muted);max-width:760px;margin:0 0 26px}
+    .hero-points{
+      display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 30px;padding:0;list-style:none
+    }
+    .hero-points li{
+      background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:.92rem
+    }
+    .cta{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:48px;padding:0 20px;border-radius:10px;
+      font-weight:750;text-decoration:none;border:1px solid transparent;
+      cursor:pointer;font:inherit;
+    }
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-primary:hover{background:var(--brand-dark)}
+    .btn-secondary{background:#fff;border-color:var(--line)}
+    section{padding:72px 0}
+    section.alt{background:var(--bg)}
+    .section-head{max-width:760px;margin-bottom:34px}
+    h2{font-size:clamp(1.55rem,3vw,2.25rem);line-height:1.35;margin:0 0 12px}
+    .section-head p{margin:0;color:var(--muted)}
+    .problems,.services,.steps{
+      display:grid;gap:18px
+    }
+    .problems{grid-template-columns:repeat(3,1fr)}
+    .services{grid-template-columns:repeat(3,1fr)}
+    .steps{grid-template-columns:repeat(3,1fr)}
+    .card{
+      background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;
+      box-shadow:0 8px 24px rgba(20,32,52,.04)
+    }
+    .problem{font-weight:700;margin:0 0 6px}
+    .card p{color:var(--muted);margin:0}
+    .service h3{font-size:1.12rem;margin:0 0 8px}
+    .price{margin-top:16px!important;color:var(--ink)!important;font-weight:800}
+    .service ul{padding-left:1.15rem;margin:12px 0 0;color:var(--muted)}
+    .service li+li{margin-top:5px}
+    .tag{
+      display:inline-block;font-size:.76rem;font-weight:700;color:var(--ok);
+      background:#edf9f4;border-radius:999px;padding:4px 8px;margin-bottom:10px
+    }
+    .note{
+      margin-top:20px;padding:16px 18px;border-left:4px solid var(--brand);
+      background:var(--soft);border-radius:8px;color:#34415a
+    }
+    .step-num{
+      width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+      background:var(--brand);color:#fff;font-weight:800;margin-bottom:14px
+    }
+    .step h3{margin:0 0 8px}
+    .area-box{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start
+    }
+    .areas{
+      display:flex;flex-wrap:wrap;gap:10px;padding:0;list-style:none;margin:18px 0 0
+    }
+    .areas li{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-weight:700}
+    .about-list{margin:0;padding-left:1.2rem}
+    .about-list li+li{margin-top:8px}
+    .contact{
+      border-radius:22px;background:#14213a;color:#fff;padding:42px;
+      display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center
+    }
+    .contact h2{margin-bottom:10px}
+    .contact p{color:#d8e0ef;margin:0}
+    .contact .cta{justify-content:flex-start}
+    .contact .btn-secondary{background:#fff}
+    .small{font-size:.86rem;color:var(--muted)}
+    .contact .small{color:#b9c4d7;margin-top:12px}
+    details{
+      background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px
+    }
+    details+details{margin-top:10px}
+    summary{font-weight:750;cursor:pointer}
+    details p{margin:10px 0 0;color:var(--muted)}
+    footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.86rem}
+    @media(max-width:800px){
+      .navlinks a:not(.nav-cta){display:none}
+      .problems,.services,.steps,.area-box,.contact{grid-template-columns:1fr}
+      .contact{padding:30px 24px}
+      .hero{padding-top:62px}
+      section{padding:58px 0}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">明石ITサポート</a>
+    <nav class="navlinks" aria-label="主要メニュー">
+      <a href="#services">サービス</a>
+      <a href="#area">対応地域</a>
+      <a href="#flow">ご相談の流れ</a>
+      <a class="btn btn-primary nav-cta" href="#contact">相談する</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">明石・神戸・加古川｜小さな会社・個人事業主向け</span>
+      <h1>「パソコンのこと、誰に聞けばいい？」を解決します。</h1>
+      <p class="lead">
+        IT担当者を雇うほどではない。でも、PC選び・初期設定・Microsoft 365・Excel・アカウント管理で困る。
+        明石ITサポートは、必要なところだけスポットで支援します。
+      </p>
+      <ul class="hero-points">
+        <li>PC購入・入替</li>
+        <li>起業時のIT準備</li>
+        <li>Microsoft 365</li>
+        <li>Google Workspace</li>
+        <li>Excel改善</li>
+        <li>二段階認証・バックアップ</li>
+      </ul>
+      <div class="cta">
+        <a class="btn btn-primary js-contact" data-channel="line" href="#contact">LINEで相談</a>
+        <a class="btn btn-secondary js-contact" data-channel="email" href="#contact">メールで相談</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>こんな困りごとはありませんか？</h2>
+        <p>「システム会社に頼むほどではない」小さなIT課題を、相談単位・作業単位で切り分けます。</p>
+      </div>
+      <div class="problems">
+        <div class="card">
+          <p class="problem">新しいPCを何にすればいいか分からない</p>
+          <p>用途・予算・Office・メモリ・SSD・保証まで整理します。</p>
+        </div>
+        <div class="card">
+          <p class="problem">買ったPCの設定を全部やってほしい</p>
+          <p>Windows、Office、メール、プリンタ、Wi-Fi、データ移行などをまとめて支援します。</p>
+        </div>
+        <div class="card">
+          <p class="problem">二段階認証やバックアップが不安</p>
+          <p>難しい言葉をできるだけ使わず、必要な設定から順番に整えます。</p>
+        </div>
+        <div class="card">
+          <p class="problem">起業したがIT環境の正解が分からない</p>
+          <p>アカウント、メール、クラウド保存、セキュリティなど最初の形を整理します。</p>
+        </div>
+        <div class="card">
+          <p class="problem">Microsoft 365やGoogle Workspaceを整理したい</p>
+          <p>メール、クラウド共有、アカウント、権限などを必要な範囲で設定します。</p>
+        </div>
+        <div class="card">
+          <p class="problem">Excelの転記・集計に毎回時間がかかる</p>
+          <p>繰り返し作業を整理し、関数・VBA・Power Automateなどから適した方法を検討します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>サービス・料金目安</h2>
+        <p>まず買いやすいスポット対応を中心にしています。内容を確認してから、必要な作業だけお見積りします。</p>
+      </div>
+
+      <div class="services">
+        <article class="card service">
+          <span class="tag">相談から始めたい</span>
+          <h3>PC購入相談</h3>
+          <p>仕事に必要な性能と予算を整理し、購入候補を一緒に絞ります。</p>
+          <ul>
+            <li>Windows PCの選定</li>
+            <li>Officeの要否</li>
+            <li>メモリ・SSD・保証の整理</li>
+          </ul>
+          <p class="price">5,000円 / 60分</p>
+        </article>
+
+        <article class="card service">
+          <span class="tag">よくある依頼</span>
+          <h3>PC初期設定・入替</h3>
+          <p>新しいPCを仕事で使える状態まで整えます。</p>
+          <ul>
+            <li>Windows・Office初期設定</li>
+            <li>メール・プリンタ・Wi-Fi</li>
+            <li>旧PCからのデータ移行</li>
+          </ul>
+          <p class="price">10,000円〜</p>
+        </article>
+
+        <article class="card service">
+          <span class="tag">起業・開業時</span>
+          <h3>起業時ITスタート</h3>
+          <p>起業直後に必要なIT環境を、過不足なく整えます。</p>
+          <ul>
+            <li>Google / Microsoftアカウント</li>
+            <li>二段階認証</li>
+            <li>クラウド保存・バックアップ</li>
+          </ul>
+          <p class="price">15,000円〜</p>
+        </article>
+
+        <article class="card service">
+          <span class="tag">クラウド整理</span>
+          <h3>Microsoft 365 / Google Workspace</h3>
+          <p>メール・ファイル共有・アカウント設定を整理します。</p>
+          <ul>
+            <li>OneDrive / SharePoint / Google Drive</li>
+            <li>共有設定・権限整理</li>
+            <li>アカウント初期設定</li>
+          </ul>
+          <p class="price">8,000円〜</p>
+        </article>
+
+        <article class="card service">
+          <span class="tag">小さな業務改善</span>
+          <h3>Excelの面倒作業改善</h3>
+          <p>毎回やっている定型作業を、小さく改善します。</p>
+          <ul>
+            <li>転記・集計</li>
+            <li>CSV加工・帳票作成</li>
+            <li>PDF化・定型処理</li>
+          </ul>
+          <p class="price">10,000円〜</p>
+        </article>
+
+        <article class="card service">
+          <span class="tag">社員が増えたら</span>
+          <h3>社員追加ITセット</h3>
+          <p>新しい社員が入ったときのPC・アカウント準備をまとめます。</p>
+          <ul>
+            <li>PC初期設定</li>
+            <li>メール・クラウドアカウント</li>
+            <li>共有フォルダ・権限設定</li>
+          </ul>
+          <p class="price">15,000円〜 / 1名</p>
+        </article>
+      </div>
+
+      <div class="note">
+        <strong>「相談だけ」と「実作業」は分けて考えます。</strong>
+        まず60分5,000円で状況整理だけでも構いません。作業が必要な場合は、内容を確認して別途お見積りします。
+      </div>
+    </div>
+  </section>
+
+  <section id="area">
+    <div class="wrap area-box">
+      <div>
+        <div class="section-head">
+          <h2>対応地域</h2>
+          <p>地域で顔が見えるIT相談先を目指しています。訪問が必要な作業と、オンラインで完結できる相談を切り分けて対応します。</p>
+        </div>
+        <ul class="areas">
+          <li>明石市</li>
+          <li>神戸市</li>
+          <li>加古川市</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">明石ITサポートについて</h3>
+        <ul class="about-list">
+          <li>小さな会社・個人事業主向け</li>
+          <li>IT担当者を雇うほどではない会社を想定</li>
+          <li>インフラ・社内ITの実務経験をもとに対応</li>
+          <li>大規模システム導入より、小さな困りごとの解決を重視</li>
+          <li>不要なシステムや契約を増やすことを前提にしません</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="flow" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>ご相談の流れ</h2>
+        <p>いきなり契約ではなく、まず困っている内容を確認します。</p>
+      </div>
+      <div class="steps">
+        <div class="card step">
+          <div class="step-num">1</div>
+          <h3>LINE・メール</h3>
+          <p>「PCを買いたい」「設定を頼みたい」程度の内容で構いません。</p>
+        </div>
+        <div class="card step">
+          <div class="step-num">2</div>
+          <h3>内容を整理</h3>
+          <p>相談だけで解決するか、訪問・作業が必要かを切り分けます。</p>
+        </div>
+        <div class="card step">
+          <div class="step-num">3</div>
+          <h3>必要な分だけ対応</h3>
+          <p>料金と作業内容を確認してから、必要な範囲だけ対応します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>よくある質問</h2>
+      </div>
+      <details>
+        <summary>小さな相談でも大丈夫ですか？</summary>
+        <p>はい。PC選び、二段階認証、メール設定など「どこに聞けばいいか分からない」内容を想定しています。</p>
+      </details>
+      <details>
+        <summary>月額契約が必要ですか？</summary>
+        <p>V0.1ではスポット相談・スポット作業を中心にしています。継続的な支援が必要な場合は、利用状況を見て相談します。</p>
+      </details>
+      <details>
+        <summary>何でも対応できますか？</summary>
+        <p>対応できない内容もあります。最初に内容を確認し、対応範囲外の場合は無理に受注しません。</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <h2>まずは困っていることを送ってください。</h2>
+          <p>「PCを買いたい」「設定を手伝ってほしい」「Excelが面倒」など、短い文章で構いません。</p>
+          <p class="small">※ V0.1ではLINE・メールの実URLを未設定です。公開前に差し替えてください。</p>
+        </div>
+        <div class="cta">
+          <!-- 公開前に href を実際のLINE URLへ変更してください -->
+          <a id="line-link" class="btn btn-primary js-contact" data-channel="line" href="#">LINEで相談</a>
+          <!-- 公開前に href を mailto:実際のメールアドレス へ変更してください -->
+          <a id="email-link" class="btn btn-secondary js-contact" data-channel="email" href="#">メールで相談</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>明石ITサポート</strong><br>
+    明石・神戸・加古川の小さな会社・個人事業主向けITサポート
+  </div>
+</footer>
+
+<script>
+  // ---- 公開前の設定 ----
+  // 例:
+  // document.getElementById('line-link').href = 'https://lin.ee/XXXXXXXX';
+  // document.getElementById('email-link').href = 'mailto:info@example.com';
+
+  function sendEvent(name, params) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, params || {});
+    }
+  }
+
+  document.querySelectorAll('.js-contact').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      var channel = el.dataset.channel || 'unknown';
+      sendEvent('contact_click', { contact_channel: channel });
+
+      // URL未設定ならページ内Contactまでスクロールするだけ
+      if (el.getAttribute('href') === '#') {
+        e.preventDefault();
+        document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+      }
+    });
+  });
+
+  document.querySelectorAll('.service').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var title = card.querySelector('h3');
+      if (title) {
+        sendEvent('service_interest', { service_name: title.textContent.trim() });
+      }
+    });
+  });
+</script>
+</body>
+</html>
