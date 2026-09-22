@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- 明石ITサポート V0.2 / 2026-09-22 -->
 <html lang="ja">
 <head>
   <meta charset="utf-8">
@@ -10,12 +11,7 @@
   <meta property="og:description" content="IT担当者を雇うほどではない小さな会社・個人事業主のIT困りごとを、必要なところだけスポットで支援します。">
   <meta property="og:type" content="website">
 
-  <!--
-    GA4を使う場合：
-    1) 下記 G-XXXXXXXXXX を自分の測定IDに変更
-    2) コメントアウトを解除
-  -->
-  
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y9ZE8CL4KK"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,7 +19,6 @@
     gtag('js', new Date());
     gtag('config', 'G-Y9ZE8CL4KK');
   </script>
-  
 
   <style>
     :root{
@@ -109,7 +104,28 @@
     .problem{font-weight:700;margin:0 0 6px}
     .card p{color:var(--muted);margin:0}
     .service h3{font-size:1.12rem;margin:0 0 8px}
-    .price{margin-top:16px!important;color:var(--ink)!important;font-weight:800}
+    .service-actions{margin-top:18px}
+    .service-actions .btn{width:100%}
+    .service-detail{
+      margin-top:14px;padding-top:14px;border-top:1px solid var(--line)
+    }
+    .service-detail[hidden]{display:none}
+    .price{
+      margin:0 0 12px!important;
+      color:var(--ink)!important;
+      font-weight:800;
+      font-size:1.05rem
+    }
+    .selected-service{
+      display:none;
+      margin:14px 0 0;
+      padding:10px 12px;
+      border-radius:9px;
+      background:rgba(255,255,255,.1);
+      color:#fff;
+      font-weight:700
+    }
+    .selected-service.is-visible{display:block}
     .service ul{padding-left:1.15rem;margin:12px 0 0;color:var(--muted)}
     .service li+li{margin-top:5px}
     .tag{
@@ -169,7 +185,7 @@
       <a href="#services">サービス</a>
       <a href="#area">対応地域</a>
       <a href="#flow">ご相談の流れ</a>
-      <a class="btn btn-primary nav-cta" href="#contact">相談する</a>
+      <a class="btn btn-primary nav-cta js-contact-open" data-contact-source="header" href="#contact">相談する</a>
     </nav>
   </div>
 </header>
@@ -236,12 +252,12 @@
   <section id="services" class="alt">
     <div class="wrap">
       <div class="section-head">
-        <h2>サービス・料金目安</h2>
-        <p>まず買いやすいスポット対応を中心にしています。内容を確認してから、必要な作業だけお見積りします。</p>
+        <h2>サービス</h2>
+        <p>気になるサービスの「概算費用を見る」を押すと料金目安が表示されます。内容を確認してから、必要な作業だけお見積りします。</p>
       </div>
 
       <div class="services">
-        <article class="card service">
+        <article class="card service" data-service-name="PC購入相談">
           <span class="tag">相談から始めたい</span>
           <h3>PC購入相談</h3>
           <p>仕事に必要な性能と予算を整理し、購入候補を一緒に絞ります。</p>
@@ -250,10 +266,22 @@
             <li>Officeの要否</li>
             <li>メモリ・SSD・保証の整理</li>
           </ul>
-          <p class="price">5,000円 / 60分</p>
+          <div class="service-actions">
+            <button type="button"
+                    class="btn btn-secondary js-price-reveal"
+                    aria-expanded="false">
+              概算費用を見る
+            </button>
+            <div class="service-detail" hidden>
+              <p class="price">概算：5,000円 / 60分</p>
+              <button type="button" class="btn btn-primary js-service-consult">
+                この内容を相談する
+              </button>
+            </div>
+          </div>
         </article>
 
-        <article class="card service">
+        <article class="card service" data-service-name="PC初期設定・入替">
           <span class="tag">よくある依頼</span>
           <h3>PC初期設定・入替</h3>
           <p>新しいPCを仕事で使える状態まで整えます。</p>
@@ -262,10 +290,22 @@
             <li>メール・プリンタ・Wi-Fi</li>
             <li>旧PCからのデータ移行</li>
           </ul>
-          <p class="price">10,000円〜</p>
+          <div class="service-actions">
+            <button type="button"
+                    class="btn btn-secondary js-price-reveal"
+                    aria-expanded="false">
+              概算費用を見る
+            </button>
+            <div class="service-detail" hidden>
+              <p class="price">概算：10,000円〜</p>
+              <button type="button" class="btn btn-primary js-service-consult">
+                この内容を相談する
+              </button>
+            </div>
+          </div>
         </article>
 
-        <article class="card service">
+        <article class="card service" data-service-name="起業時ITスタート">
           <span class="tag">起業・開業時</span>
           <h3>起業時ITスタート</h3>
           <p>起業直後に必要なIT環境を、過不足なく整えます。</p>
@@ -274,10 +314,22 @@
             <li>二段階認証</li>
             <li>クラウド保存・バックアップ</li>
           </ul>
-          <p class="price">15,000円〜</p>
+          <div class="service-actions">
+            <button type="button"
+                    class="btn btn-secondary js-price-reveal"
+                    aria-expanded="false">
+              概算費用を見る
+            </button>
+            <div class="service-detail" hidden>
+              <p class="price">概算：15,000円〜</p>
+              <button type="button" class="btn btn-primary js-service-consult">
+                この内容を相談する
+              </button>
+            </div>
+          </div>
         </article>
 
-        <article class="card service">
+        <article class="card service" data-service-name="Microsoft 365 / Google Workspace">
           <span class="tag">クラウド整理</span>
           <h3>Microsoft 365 / Google Workspace</h3>
           <p>メール・ファイル共有・アカウント設定を整理します。</p>
@@ -286,10 +338,22 @@
             <li>共有設定・権限整理</li>
             <li>アカウント初期設定</li>
           </ul>
-          <p class="price">8,000円〜</p>
+          <div class="service-actions">
+            <button type="button"
+                    class="btn btn-secondary js-price-reveal"
+                    aria-expanded="false">
+              概算費用を見る
+            </button>
+            <div class="service-detail" hidden>
+              <p class="price">概算：8,000円〜</p>
+              <button type="button" class="btn btn-primary js-service-consult">
+                この内容を相談する
+              </button>
+            </div>
+          </div>
         </article>
 
-        <article class="card service">
+        <article class="card service" data-service-name="Excelの面倒作業改善">
           <span class="tag">小さな業務改善</span>
           <h3>Excelの面倒作業改善</h3>
           <p>毎回やっている定型作業を、小さく改善します。</p>
@@ -298,10 +362,22 @@
             <li>CSV加工・帳票作成</li>
             <li>PDF化・定型処理</li>
           </ul>
-          <p class="price">10,000円〜</p>
+          <div class="service-actions">
+            <button type="button"
+                    class="btn btn-secondary js-price-reveal"
+                    aria-expanded="false">
+              概算費用を見る
+            </button>
+            <div class="service-detail" hidden>
+              <p class="price">概算：10,000円〜</p>
+              <button type="button" class="btn btn-primary js-service-consult">
+                この内容を相談する
+              </button>
+            </div>
+          </div>
         </article>
 
-        <article class="card service">
+        <article class="card service" data-service-name="社員追加ITセット">
           <span class="tag">社員が増えたら</span>
           <h3>社員追加ITセット</h3>
           <p>新しい社員が入ったときのPC・アカウント準備をまとめます。</p>
@@ -310,7 +386,19 @@
             <li>メール・クラウドアカウント</li>
             <li>共有フォルダ・権限設定</li>
           </ul>
-          <p class="price">15,000円〜 / 1名</p>
+          <div class="service-actions">
+            <button type="button"
+                    class="btn btn-secondary js-price-reveal"
+                    aria-expanded="false">
+              概算費用を見る
+            </button>
+            <div class="service-detail" hidden>
+              <p class="price">概算：15,000円〜 / 1名</p>
+              <button type="button" class="btn btn-primary js-service-consult">
+                この内容を相談する
+              </button>
+            </div>
+          </div>
         </article>
       </div>
 
@@ -399,7 +487,8 @@
         <div>
           <h2>まずは困っていることを送ってください。</h2>
           <p>「PCを買いたい」「設定を手伝ってほしい」「Excelが面倒」など、短い文章で構いません。</p>
-          <p class="small">※ V0.1ではLINE・メールの実URLを未設定です。公開前に差し替えてください。</p>
+          <div id="selected-service" class="selected-service" aria-live="polite"></div>
+          <p class="small">※ LINE・メールの実URLを未設定の場合は、公開前に差し替えてください。</p>
         </div>
         <div class="cta">
           <!-- 公開前に href を実際のLINE URLへ変更してください -->
@@ -431,10 +520,44 @@
     }
   }
 
+  function setSelectedService(serviceName) {
+    if (serviceName) {
+      sessionStorage.setItem('selected_service', serviceName);
+    } else {
+      sessionStorage.removeItem('selected_service');
+    }
+
+    var box = document.getElementById('selected-service');
+    if (!box) return;
+
+    if (serviceName) {
+      box.textContent = '選択中の相談内容：' + serviceName;
+      box.classList.add('is-visible');
+    } else {
+      box.textContent = '';
+      box.classList.remove('is-visible');
+    }
+  }
+
+  // 右上の「相談する」：問い合わせ欄を開いたことだけを計測
+  document.querySelectorAll('.js-contact-open').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var source = el.dataset.contactSource || 'unknown';
+      setSelectedService('');
+      sendEvent('contact_open', { contact_source: source });
+    });
+  });
+
+  // LINE / メールのクリック
   document.querySelectorAll('.js-contact').forEach(function(el) {
     el.addEventListener('click', function(e) {
       var channel = el.dataset.channel || 'unknown';
-      sendEvent('contact_click', { contact_channel: channel });
+      var selectedService = sessionStorage.getItem('selected_service') || 'none';
+
+      sendEvent('contact_click', {
+        contact_channel: channel,
+        selected_service: selectedService
+      });
 
       // URL未設定ならページ内Contactまでスクロールするだけ
       if (el.getAttribute('href') === '#') {
@@ -444,12 +567,46 @@
     });
   });
 
-  document.querySelectorAll('.service').forEach(function(card) {
-    card.addEventListener('click', function() {
-      var title = card.querySelector('h3');
-      if (title) {
-        sendEvent('service_interest', { service_name: title.textContent.trim() });
+  // 「概算費用を見る」＝価格を見る前のサービス関心
+  document.querySelectorAll('.js-price-reveal').forEach(function(button) {
+    button.addEventListener('click', function() {
+      var card = button.closest('.service');
+      if (!card) return;
+
+      var serviceName = card.dataset.serviceName || 'unknown';
+      var detail = card.querySelector('.service-detail');
+
+      // 同じカードで何度押しても service_interest は1回だけ送る
+      if (button.dataset.revealed !== 'true') {
+        sendEvent('service_interest', {
+          service_name: serviceName,
+          interest_action: 'price_reveal'
+        });
+        button.dataset.revealed = 'true';
       }
+
+      if (detail) {
+        detail.hidden = false;
+      }
+      button.setAttribute('aria-expanded', 'true');
+      button.hidden = true;
+    });
+  });
+
+  // 価格を見た後に「この内容を相談する」
+  document.querySelectorAll('.js-service-consult').forEach(function(button) {
+    button.addEventListener('click', function() {
+      var card = button.closest('.service');
+      if (!card) return;
+
+      var serviceName = card.dataset.serviceName || 'unknown';
+      setSelectedService(serviceName);
+
+      sendEvent('service_consult', {
+        service_name: serviceName
+      });
+
+      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
     });
   });
 </script>
