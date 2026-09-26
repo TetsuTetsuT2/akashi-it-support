@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- 明石ITサポート V0.2 / 2026-09-22 -->
+<!-- 明石ITサポート V0.3 / 2026-09-26 -->
 <html lang="ja">
 <head>
   <meta charset="utf-8">
@@ -208,8 +208,8 @@
         <li>二段階認証・バックアップ</li>
       </ul>
       <div class="cta">
-        <a class="btn btn-primary js-contact" data-channel="line" href="#contact">LINEで相談</a>
-        <a class="btn btn-secondary js-contact" data-channel="email" href="#contact">メールで相談</a>
+        <a class="btn btn-primary js-contact" data-channel="line" href="https://lin.ee/z4svsgk">LINEで相談</a>
+        <a class="btn btn-secondary js-contact" data-channel="email" href="mailto:akashi.it.support@gmail.com">メールで相談</a>
       </div>
     </div>
   </section>
@@ -488,13 +488,11 @@
           <h2>まずは困っていることを送ってください。</h2>
           <p>「PCを買いたい」「設定を手伝ってほしい」「Excelが面倒」など、短い文章で構いません。</p>
           <div id="selected-service" class="selected-service" aria-live="polite"></div>
-          <p class="small">※ LINE・メールの実URLを未設定の場合は、公開前に差し替えてください。</p>
+          <p class="small">LINEまたはメールからご相談いただけます。</p>
         </div>
         <div class="cta">
-          <!-- 公開前に href を実際のLINE URLへ変更してください -->
-          <a id="line-link" class="btn btn-primary js-contact" data-channel="line" href="#">LINEで相談</a>
-          <!-- 公開前に href を mailto:実際のメールアドレス へ変更してください -->
-          <a id="email-link" class="btn btn-secondary js-contact" data-channel="email" href="#">メールで相談</a>
+          <a id="line-link" class="btn btn-primary js-contact" data-channel="line" href="https://lin.ee/z4svsgk">LINEで相談</a>
+          <a id="email-link" class="btn btn-secondary js-contact" data-channel="email" href="mailto:akashi.it.support@gmail.com">メールで相談</a>
         </div>
       </div>
     </div>
@@ -509,10 +507,9 @@
 </footer>
 
 <script>
-  // ---- 公開前の設定 ----
-  // 例:
-  // document.getElementById('line-link').href = 'https://lin.ee/XXXXXXXX';
-  // document.getElementById('email-link').href = 'mailto:info@example.com';
+  // ---- お問い合わせ先 ----
+  const LINE_URL = 'https://lin.ee/z4svsgk';
+  const CONTACT_EMAIL = 'akashi.it.support@gmail.com';
 
   function sendEvent(name, params) {
     if (typeof window.gtag === 'function') {
